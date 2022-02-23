@@ -1,8 +1,20 @@
+<div class="container col-6">
+  <h1 class="p-2 bg-light border text-center"> Restaurant <%= @restaurant.name%></h1>
+  <p class="p-2 bg-light border"> Location :<%= @restaurant.address %></p>
+  <p class="p-2 bg-light border"> Phone Number :<%= @restaurant.phone_number %> </p>
+  <p class="p-2 bg-light border">Category :<%= @restaurant.category %> </p>
+  <p> <% @restaurant.reviews.each do |review| %>
+    <p>Restaurant's Review: <br> <%= review.content  %>
+    <%= review.rating %> </p>
+    <% end %> </p>
+  <%= link_to restaurants_path do%>
+      <i class="fas fa-arrow-alt-circle-left"> Back to Lists</i>
+  <% end %>
 
-<h1> Restaurant <%= @restaurant.name%></h1>
-<p> <%= @restaurant.address %></p>
-<p><%= @restaurant.phone_number %> </p>
-<p><%= @restaurant.category %> </p>
-<p><%= @restaurant.reviews %> </p>
+  <br>
 
-<%= link_to "Back to List", restaurants_path  %>
+  <%= link_to new_restaurant_review_path(@restaurant) do%>
+    <i class="fas fa-calendar-edit">Write a review</i>
+  <% end %>
+
+</div>
